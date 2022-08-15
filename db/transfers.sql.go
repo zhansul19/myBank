@@ -76,7 +76,7 @@ type ListTransfersParams struct {
 func (q *Queries) ListTransfers(ctx context.Context, arg ListTransfersParams) ([]Transfers, error) {
 	rows, err := q.db.QueryContext(ctx, listTransfers,
 		arg.FromAccountID,
-		arg.ToAccountID,
+		arg.ToAccountID,  
 		arg.Limit,
 		arg.Offset,
 	)

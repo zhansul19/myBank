@@ -33,7 +33,8 @@ func (store *Store) execTx(ctx context.Context, fn func(*Queries) error) error {
 	}
 	return tx.Commit()
 }
-func (store *Store) transferTX(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
+
+func (store *Store) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
 	var result TransferTxResult
 
 	err := store.execTx(ctx, func(q *Queries) error {
@@ -77,7 +78,7 @@ type TransferTxParams struct {
 }
 type TransferTxResult struct {
 	Transfers   Transfers `json:"transfers"`
-	FromAccoont Accounts  `json:"from_account"`
+	FromAccount Accounts  `json:"from_account"`
 	ToAccount   Accounts  `json:"to_account"`
 	FromEntry   Entries   `json:"from_entry"`
 	ToEntry     Entries   `json:"to_entry"`
