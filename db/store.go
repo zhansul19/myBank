@@ -63,41 +63,10 @@ func (store *Store) TransferTx(ctx context.Context, arg TransferTxParams) (Trans
 			return err
 		}
 		if arg.FromAccountID < arg.ToAccountID {
-			// move money out of account1
-			result.FromAccount, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
-				ID:     arg.FromAccountID,
-				Amount: -arg.Amount,
-			})
-			if err != nil {
-				return err
-			}
-
-			// move money into account2
-			result.ToAccount, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
-				ID:     arg.ToAccountID,
-				Amount: arg.Amount,
-			})
-			if err != nil {
-				return err
-			}
-		} else {
-			// move money into account2
-			result.ToAccount, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
-				ID:     arg.ToAccountID,
-				Amount: arg.Amount,
-			})
-			if err != nil {
-				return err
-			}
-			// move money out of account1
-			result.FromAccount, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
-				ID:     arg.FromAccountID,
-				Amount: -arg.Amount,
-			})
-			if err != nil {
-				return err
-			}
-		}
+            result.FromAccount, result.ToAccount, err = addMoney(ctx, q, arg.FromAccountID, -arg.Amount, arg.ToAccountID, arg.Amount)
+        } else {
+            result.ToAccount, result.FromAccount, err = addMoney(ctx, q, arg.ToAccountID, arg.Amount, arg.FromAccountID, -arg.Amount)
+        }
 
 		return nil
 	})
@@ -116,4 +85,14 @@ type TransferTxResult struct {
 	ToAccount   Accounts  `json:"to_account"`
 	FromEntry   Entries   `json:"from_entry"`
 	ToEntry     Entries   `json:"to_entry"`
+}
+
+func addMoney(ctx context.Context, q *Queries, acountID1, amount1, acountID2, amount2 int64) (account1, account2 Accounts, err error) {
+	account1, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{Amount: amount1, ID: acountID1})
+	if err != nil {
+		return
+	}
+	account2, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{Amount: amount2, ID: acountID2})	
+	return
+
 }
