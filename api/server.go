@@ -2,15 +2,15 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/zhansul19/myBank/db"
+	db "github.com/zhansul19/myBank/db/sqlc"
 )
 
 type Server struct {
-	store  *db.Store
+	store  db.Store
 	router *gin.Engine
 }
 
-func NewServer(db *db.Store) *Server {
+func NewServer(db db.Store) *Server {
 	server := &Server{
 		store:  db,
 		router: gin.Default(),
@@ -21,7 +21,7 @@ func NewServer(db *db.Store) *Server {
 	server.router.DELETE("/accounts/:id", server.deleteAccount)
 
 	return server
-} 
+}
 
 func (s *Server) Run(address string) error {
 	return s.router.Run(address)

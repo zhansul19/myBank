@@ -7,7 +7,7 @@ import (
 	_ "github.com/lib/pq"
 	"github.com/zhansul19/myBank/api"
 	"github.com/zhansul19/myBank/config"
-	"github.com/zhansul19/myBank/db"
+	db "github.com/zhansul19/myBank/db/sqlc"
 )
 
 func main() {

@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/zhansul19/myBank/db"
+	db "github.com/zhansul19/myBank/db/sqlc"
 )
 
 type createAccountReq struct {
@@ -38,14 +38,13 @@ type getAccountReq struct {
 
 func (s *Server) getAccount(ctx *gin.Context) {
 	var req getAccountReq
-
 	if err := ctx.ShouldBindUri(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
 	}
 	account, err := s.store.GetAccount(ctx, req.ID)
 	if err != nil {
-		if err != sql.ErrNoRows {
+		if err == sql.ErrNoRows {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))
 			return
 		}
@@ -84,8 +83,8 @@ func (s *Server) deleteAccount(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
 	}
-	s.store.DeleteTransfer(ctx,req.ID)
-	s.store.DeleteEntry(ctx,req.ID)
+	s.store.DeleteTransfer(ctx, req.ID)
+	s.store.DeleteEntry(ctx, req.ID)
 	err := s.store.DeleteAccount(ctx, req.ID)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
