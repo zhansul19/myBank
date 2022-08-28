@@ -10,5 +10,4 @@ var validCurrency validator.Func = func(fl validator.FieldLevel) bool {
 		return util.IsSupported(currency)
 	}
 	return false
-
 }

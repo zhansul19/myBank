@@ -14,19 +14,20 @@ func TestCreateAccount(t *testing.T) {
 	createRandomAccount(t)
 }
 func createRandomAccount(t *testing.T) Accounts {
-	user := CreateAccountParams{
-		Owner:    util.RandomOwner(),
+	user:=createRandomUser(t)
+	arg := CreateAccountParams{
+		Owner:    user.Username,
 		Balance:  util.RandomMoney(),
 		Currency: util.RandomCurrency(),
 	}
-	account, err := testQueries.CreateAccount(context.Background(), user)
+	account, err := testQueries.CreateAccount(context.Background(), arg)
 
 	require.NoError(t, err)
 	require.NotEmpty(t, account)
 
-	require.Equal(t, user.Owner, account.Owner)
-	require.Equal(t, user.Balance, account.Balance)
-	require.Equal(t, user.Currency, account.Currency)
+	require.Equal(t, arg.Owner, account.Owner)
+	require.Equal(t, arg.Balance, account.Balance)
+	require.Equal(t, arg.Currency, account.Currency)
 
 	require.NotZero(t, account.ID)
 	require.NotZero(t, account.CreatedAt)
