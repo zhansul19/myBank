@@ -1,7 +1,6 @@
 package api
 
 import (
-	"database/sql"
 	"log"
 	"net/http"
 	"time"
@@ -66,24 +65,24 @@ func (s *Server) createUser(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, resp)
 }
 
-type getUserReq struct {
-	Username string `json:"username" binding:"required"`
-}
+// type getUserReq struct {
+// 	Username string `json:"username" binding:"required"`
+// }
 
-func (s *Server) getUser(ctx *gin.Context) {
-	var req getUserReq
-	if err := ctx.ShouldBindJSON(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, errorResponse(err))
-		return
-	}
-	user, err := s.store.GetUser(ctx, req.Username)
-	if err != nil {
-		if err == sql.ErrNoRows {
-			ctx.JSON(http.StatusNotFound, errorResponse(err))
-			return
-		}
-		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
-		return
-	}
-	ctx.JSON(http.StatusOK, user)
-}
+// func (s *Server) getUser(ctx *gin.Context) {
+// 	var req getUserReq
+// 	if err := ctx.ShouldBindJSON(&req); err != nil {
+// 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+// 		return
+// 	}
+// 	user, err := s.store.GetUser(ctx, req.Username)
+// 	if err != nil {
+// 		if err == sql.ErrNoRows {
+// 			ctx.JSON(http.StatusNotFound, errorResponse(err))
+// 			return
+// 		}
+// 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+// 		return
+// 	}
+// 	ctx.JSON(http.StatusOK, user)
+// }
