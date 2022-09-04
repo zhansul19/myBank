@@ -1,38 +1,54 @@
 package api
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
+	"github.com/zhansul19/myBank/config"
 	db "github.com/zhansul19/myBank/db/sqlc"
+	"github.com/zhansul19/myBank/token"
 )
 
 type Server struct {
-	store  db.Store
-	router *gin.Engine
+	config     config.Config
+	store      db.Store
+	router     *gin.Engine
+	tokenMaker token.Maker
 }
 
-func NewServer(db db.Store) *Server {
+func NewServer(config config.Config, db db.Store) (*Server, error) {
+	token, err := token.NewPasetoMaker(config.TokenKey)
+	if err != nil {
+		return nil, fmt.Errorf("couldn't create token: %w", err)
+	}
+
 	server := &Server{
-		store:  db,
-		router: gin.Default(),
+		config:     config,
+		store:      db,
+		tokenMaker: token,
 	}
 
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
-		v.RegisterValidation("currency",validCurrency)
+		v.RegisterValidation("currency", validCurrency)
 	}
+	server.setupRooutes()
+	return server, nil
+}
+func (server *Server) setupRooutes() {
+	router := gin.Default()
+	router.POST("/users", server.createUser)
+	router.POST("/users/login", server.loginUser)
+	// router.GET("/user/:id", server.getUser)
 
-	server.router.POST("/users", server.createUser)
-	// server.router.GET("/user/:id", server.getUser)
+	router.POST("/accounts", server.createAccount)
+	router.GET("/accounts/:id", server.getAccount)
+	router.GET("/accounts", server.listAccount)
+	router.DELETE("/accounts/:id", server.deleteAccount)
 
-
-	server.router.POST("/accounts", server.createAccount)
-	server.router.GET("/accounts/:id", server.getAccount)
-	server.router.GET("/accounts", server.listAccount)
-	server.router.DELETE("/accounts/:id", server.deleteAccount)
-
-	server.router.POST("/transfer", server.CreateTransfer)
-	return server
+	router.POST("/transfer", server.CreateTransfer)
+	server.router = router
 }
 
 func (s *Server) Run(address string) error {
