@@ -6,19 +6,19 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
-	"github.com/zhansul19/myBank/config"
+	"github.com/zhansul19/myBank/util"
 	db "github.com/zhansul19/myBank/db/sqlc"
 	"github.com/zhansul19/myBank/token"
 )
 
 type Server struct {
-	config     config.Config
+	config     util.Config
 	store      db.Store
 	router     *gin.Engine
 	tokenMaker token.Maker
 }
 
-func NewServer(config config.Config, db db.Store) (*Server, error) {
+func NewServer(config util.Config, db db.Store) (*Server, error) {
 	token, err := token.NewPasetoMaker(config.TokenKey)
 	if err != nil {
 		return nil, fmt.Errorf("couldn't create token: %w", err)

@@ -7,7 +7,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
-	"github.com/zhansul19/myBank/config"
 	db "github.com/zhansul19/myBank/db/sqlc"
 	"github.com/zhansul19/myBank/util"
 )
@@ -18,7 +17,7 @@ func TestMain(m *testing.M) {
 }
 
 func newTestServer(t *testing.T, store db.Store) *Server {
-	config := config.Config{
+	config := util.Config{
 		TokenKey:      util.RandomString(32),
 		TokenDuration: time.Minute,
 	}

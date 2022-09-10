@@ -6,12 +6,12 @@ import (
 
 	_ "github.com/lib/pq"
 	"github.com/zhansul19/myBank/api"
-	"github.com/zhansul19/myBank/config"
+	"github.com/zhansul19/myBank/util"
 	db "github.com/zhansul19/myBank/db/sqlc"
 )
 
 func main() {
-	config, err := config.LoadConfig("./config")
+	config, err := util.LoadConfig(".")
 	if err != nil {
 		log.Fatal(err)
 	}
