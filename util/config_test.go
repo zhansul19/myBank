@@ -7,7 +7,7 @@ import (
 )
 
 func TestLoadConfig(t *testing.T) {
-	path := ".././config"
+	path := "../."
 	c, err := LoadConfig(path)
 	require.NoError(t, err)
 	require.NotEmpty(t, c)
