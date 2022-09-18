@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: mybank-api
-        image: 204456373926.dkr.ecr.ap-southeast-1.amazonaws.com/mybank:550fefef02ad147289ac1f613476b33e8dc4cadb
+        image: 204456373926.dkr.ecr.ap-southeast-1.amazonaws.com/mybank:e0785ae3325614a0582c724bf0c968f4e6a73c13
         ports:
         - containerPort: 8080
