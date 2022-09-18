@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Sep  6 14:46:15 2022
+# Make data base, printed on Mon Sep 12 17:33:37 2022
 
 # Variables
 
@@ -47,7 +47,7 @@ GOPATH = /home/zhansultan/go
 # environment
 SNAP_INSTANCE_NAME = code
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/105/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/106/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -67,7 +67,7 @@ OLDPWD = /home/zhansultan
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = /home/zhansultan/.config/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
+VSCODE_CODE_CACHE_PATH = /home/zhansultan/.config/Code/CachedData/784b0177c56c607789f9638da7b6bf3230d47a8c
 # environment
 LANG = C
 # environment
@@ -107,7 +107,7 @@ SNAP_REEXEC =
 # environment
 ZSH = /home/zhansultan/.oh-my-zsh
 # environment
-VSCODE_PID = 6319
+VSCODE_PID = 7291
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -115,7 +115,7 @@ XDG_SESSION_TYPE = x11
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/Tom:@/tmp/.ICE-unix/2087,unix/Tom:/tmp/.ICE-unix/2087
+SESSION_MANAGER = local/Tom:@/tmp/.ICE-unix/2082,unix/Tom:/tmp/.ICE-unix/2082
 # automatic
 *F = $(notdir $*)
 # environment
@@ -151,7 +151,7 @@ PATH = /home/zhansultan/.local/bin:/home/zhansultan/bin:/usr/local/sbin:/usr/loc
 # default
 MAKEFILES := 
 # makefile (from 'Makefile', line 1)
-DB_URL = postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable
+DB_URL = postgresql://root:Secretpassword@mybank.cztyee9e1dsx.ap-southeast-1.rds.amazonaws.com:5432/simple_bank
 # environment
 LANGUAGE = en_US:en
 # environment
@@ -163,11 +163,11 @@ SNAP_USER_COMMON = /home/zhansultan/snap/code/common
 # environment
 LC_TIME = kk_KZ.UTF-8
 # environment
-SNAP = /snap/code/105
+SNAP = /snap/code/106
 # environment
-INVOCATION_ID = 030e7f94ed0249aa9c2d5cbbe374ed22
+INVOCATION_ID = 7e5d2878f4be42b7a5663b72e499bfdb
 # environment
-SNAP_REVISION = 105
+SNAP_REVISION = 106
 # environment
 SNAP_REAL_HOME = /home/zhansultan
 # environment
@@ -199,7 +199,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := postgres
 # environment
-SYSTEMD_EXEC_PID = 2116
+SYSTEMD_EXEC_PID = 2112
 # environment
 DISPLAY = :0
 # environment
@@ -211,21 +211,19 @@ DEFAULTS_PATH = /usr/share/gconf/ubuntu-xorg.default.path
 # default
 MAKE_VERSION := 4.3
 # environment
-DISABLE_WAYLAND = 1
-# environment
-SNAP_DATA = /var/snap/code/105
+SNAP_DATA = /var/snap/code/106
 # environment
 SNAP_CONTEXT = HDW_udOovS29xCyIYWWDpJMWOYWFJ3JgkfseWKauMeOgwU2f2wfO
 # environment
-MANAGERPID = 1794
+MANAGERPID = 1787
 # environment
 LC_MEASUREMENT = kk_KZ.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 6271
+GIO_LAUNCHED_DESKTOP_FILE_PID = 7242
 # environment
 PAGER = less
 # environment
-_ = /snap/code/105/usr/share/code/code
+_ = /snap/code/106/usr/share/code/code
 # environment
 LC_PAPER = kk_KZ.UTF-8
 # environment
@@ -235,7 +233,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/zhansultan/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-JOURNAL_STREAM = 8:34421
+JOURNAL_STREAM = 8:33458
 # environment
 GOMODCACHE = /home/zhansultan/go/pkg/mod
 # environment
@@ -249,11 +247,11 @@ QT_IM_MODULE = ibus
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-099e0d93-1.70.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-099e0d93-1.71.0-main.sock
 # environment
 SNAP_NAME = code
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/105/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/106/usr/share/glib-2.0/schemas
 # environment
 PAPERSIZE = a4
 # environment
@@ -263,7 +261,7 @@ GOPROXY = https://proxy.golang.org,direct
 # automatic
 <F = $(notdir $<)
 # environment
-SNAP_VERSION = e4503b30
+SNAP_VERSION = 784b0177
 # default
 SUFFIXES := 
 # environment
@@ -275,18 +273,18 @@ SNAP_COMMON = /var/snap/code/common
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
 # environment
-SNAP_USER_DATA = /home/zhansultan/snap/code/105
+SNAP_USER_DATA = /home/zhansultan/snap/code/106
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
 GDMSESSION = ubuntu-xorg
- 
 # environment
 LC_IDENTIFICATION = kk_KZ.UTF-8
+ 
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=136/1024=13%, Rehash=0, Collisions=6/166=4%
+# Load=135/1024=13%, Rehash=0, Collisions=6/165=4%
 
 # Pattern-specific Variable Values
 
@@ -294,9 +292,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 66307, inode 6294731): 20 files, no impossibilities.
+# . (device 66307, inode 6294731): 21 files, no impossibilities.
 
-# 20 files, no impossibilities in 1 directories.
+# 21 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -315,7 +313,7 @@ migratedown:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-28 11:49:34.085014991
+#  Last modified 2022-09-11 13:54:38.463330999
 #  File has been updated.
 #  Successfully updated.
 
@@ -424,12 +422,12 @@ createdb:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 37 / storage = 319 B / avg = 8 B
-# current buf: size = 8162 B / used = 319 B / count = 37 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 38 / storage = 331 B / avg = 8 B
+# current buf: size = 8162 B / used = 331 B / count = 38 / avg = 8 B
 
-# strcache performance: lookups = 63 / hit rate = 41%
+# strcache performance: lookups = 64 / hit rate = 40%
 # hash-table stats:
-# Load=37/8192=0%, Rehash=0, Collisions=0/63=0%
-# Finished Make data base on Tue Sep  6 14:46:15 2022
+# Load=38/8192=0%, Rehash=0, Collisions=0/64=0%
+# Finished Make data base on Mon Sep 12 17:33:37 2022
 
  
